@@ -1,0 +1,275 @@
+/* src/App.css */
+/* Improved base styles for app container */
+.app-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  /* Using a simpler background for potentially better performance */
+  background: linear-gradient(135deg, #e0f7fa, #80deea);
+  padding: 20px;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  /* Using a slightly shorter animation duration */
+  animation: fadeIn 0.75s ease-in-out;
+}
+
+/* Enhanced app title styling */
+.app-title {
+  font-size: 3.5rem;
+  color: #2c3e50;
+  margin-bottom: 30px;
+  position: relative;
+  /* Combining bounce and color shift for potential minor efficiency */
+  animation: titleAnimation 1.5s ease-out, colorShift 5s infinite alternate;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.app-title::after {
+  content: '';
+  position: absolute;
+  width: 60%;
+  height: 5px;
+  background-color: #3498db;
+  bottom: -15px;
+  left: 20%;
+  border-radius: 3px;
+  /* Slightly shorter grow animation */
+  animation: grow 0.75s ease-out forwards;
+}
+
+/* Streamlined weather form styles */
+.weather-form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 30px;
+  /* Slightly shorter fade-up animation */
+  animation: fadeUp 1s ease-in-out;
+  width: 100%;
+  max-width: 400px;
+}
+
+.weather-form input {
+  padding: 16px;
+  border: 2px solid #bdc3c7;
+  border-radius: 12px;
+  font-size: 1.1rem;
+  margin-bottom: 20px;
+  width: 100%;
+  box-sizing: border-box;
+  /* Using a more concise transition property */
+  transition: border-color 0.3s, box-shadow 0.3s;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.weather-form input:focus {
+  border-color: #3498db;
+  box-shadow: 0 0 15px rgba(52, 152, 219, 0.4);
+  outline: none;
+}
+
+.weather-form button {
+  padding: 14px 30px;
+  background-color: #3498db;
+  color: white;
+  border: none;
+  border-radius: 12px;
+  font-size: 1.2rem;
+  cursor: pointer;
+  /* More concise transition property */
+  transition: background-color 0.3s, transform 0.3s, box-shadow 0.3s;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.weather-form button::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(to right, rgba(255, 255, 255, 0.3), rgba(255, 255, 255, 0));
+  transition: left 0.4s ease-out; /* Slightly faster transition */
+}
+
+.weather-form button:hover {
+  background-color: #2980b9;
+  transform: scale(1.03); /* Slightly reduced scale for potentially smoother animation */
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.25);
+}
+
+.weather-form button:hover::before {
+  left: 100%;
+}
+
+/* Refined weather display styles */
+.weather-display {
+  text-align: center;
+  padding: 30px;
+  background: rgba(255, 255, 255, 0.95);
+  border-radius: 18px;
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.25);
+  width: 100%;
+  max-width: 500px;
+  /* Slightly shorter zoom-in animation */
+  animation: zoomIn 1s ease-in-out;
+}
+
+.weather-display h2 {
+  font-size: 2.5rem;
+  color: #3498db;
+  margin-bottom: 15px;
+  /* Consider a slightly different pulse for potential perceived smoothness */
+  animation: pulse 1.2s infinite alternate;
+  font-weight: 600;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
+}
+
+.weather-display p {
+  font-size: 1.4rem;
+  margin: 10px 0;
+  line-height: 1.6;
+}
+
+/* Error message styling */
+.error-message {
+  color: #e74c3c;
+  font-weight: bold;
+  margin-top: 15px;
+  /* Slightly faster shake animation */
+  animation: shake 0.4s ease-in-out;
+  font-size: 1.1rem;
+}
+
+/* Animations - Consolidated and potentially optimized */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+/* Combining bounceIn and initial color for potential minor optimization */
+@keyframes titleAnimation {
+  0% {
+    transform: scale(0.5);
+    opacity: 0;
+    color: #3498db; /* Start with the secondary color */
+  }
+  60% {
+    transform: scale(1.1);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+    color: #2c3e50; /* End with the primary color */
+  }
+}
+
+@keyframes grow {
+  from {
+    width: 0%;
+  }
+  to {
+    width: 60%;
+  }
+}
+
+@keyframes fadeUp {
+  0% {
+    opacity: 0;
+    transform: translateY(20px); /* Slightly reduced distance */
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes zoomIn {
+  0% {
+    transform: scale(0.9); /* Start slightly larger */
+    opacity: 0;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+@keyframes pulse {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.03); /* Slightly reduced pulse */
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+@keyframes shake {
+  0%, 100% {
+    transform: translateX(0);
+  }
+  25% {
+    transform: translateX(-4px); /* Slightly reduced shake distance */
+  }
+  50% {
+    transform: translateX(4px);
+  }
+  75% {
+    transform: translateX(-4px);
+  }
+}
+
+@keyframes colorShift {
+  0% { color: #2c3e50; }
+  50% { color: #3498db; }
+  100% { color: #2c3e50; }
+}
+
+/* Responsive Styling - Minor adjustments */
+@media (max-width: 768px) {
+  .app-container {
+    padding: 15px;
+  }
+
+  .app-title {
+    font-size: 2.6rem; /* Slightly smaller font size */
+  }
+
+  .weather-form input {
+    width: 95%;
+    padding: 14px; /* Slightly reduced padding */
+    font-size: 1rem; /* Slightly smaller font size */
+    margin-bottom: 15px; /* Slightly reduced margin */
+  }
+
+  .weather-form button {
+    padding: 12px 25px; /* Slightly reduced padding */
+    font-size: 1.1rem; /* Slightly smaller font size */
+  }
+
+  .weather-display {
+    width: 95%;
+    padding: 20px; /* Slightly reduced padding */
+  }
+
+  .weather-display h2 {
+    font-size: 2rem; /* Slightly smaller font size */
+  }
+
+  .weather-display p {
+    font-size: 1.2rem; /* Slightly smaller font size */
+  }
+}
